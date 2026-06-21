@@ -9,15 +9,71 @@ import { Login } from './components/views/Login';
 import { Profile } from './components/views/Profile';
 import { Settings } from './components/views/Settings';
 import { SignUp } from './components/views/SignUp';
+import { About } from './components/views/About';
 
-export type ViewType = 'landing' | 'login' | 'signup' | 'dashboard' | 'exams' | 'lessons' | 'profile' | 'settings';
+import { Pricing } from './components/views/Pricing';
+import { Teachers } from './components/views/Teachers';
+import { Courses } from './components/views/Courses';
+
+export type ViewType = 'landing' | 'login' | 'signup' | 'about' | 'pricing' | 'teachers' | 'courses' | 'dashboard' | 'exams' | 'lessons' | 'profile' | 'settings';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewType>('landing');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   if (currentView === 'landing') {
-    return <LandingPage onLogin={() => setCurrentView('login')} onRegister={() => setCurrentView('signup')} />;
+    return <LandingPage 
+      onLogin={() => setCurrentView('login')} 
+      onRegister={() => setCurrentView('signup')} 
+      onAbout={() => setCurrentView('about')}
+      onPricing={() => setCurrentView('pricing')}
+      onTeachers={() => setCurrentView('teachers')}
+      onCourses={() => setCurrentView('courses')}
+    />;
+  }
+
+  if (currentView === 'about') {
+    return <About 
+      onHomeClick={() => setCurrentView('landing')}
+      onLoginClick={() => setCurrentView('login')}
+      onRegisterClick={() => setCurrentView('signup')}
+      onPricingClick={() => setCurrentView('pricing')}
+      onTeachersClick={() => setCurrentView('teachers')}
+      onCoursesClick={() => setCurrentView('courses')}
+    />;
+  }
+
+  if (currentView === 'pricing') {
+    return <Pricing 
+      onHomeClick={() => setCurrentView('landing')}
+      onLoginClick={() => setCurrentView('login')}
+      onRegisterClick={() => setCurrentView('signup')}
+      onAboutClick={() => setCurrentView('about')}
+      onTeachersClick={() => setCurrentView('teachers')}
+      onCoursesClick={() => setCurrentView('courses')}
+    />;
+  }
+
+  if (currentView === 'teachers') {
+    return <Teachers 
+      onHomeClick={() => setCurrentView('landing')}
+      onLoginClick={() => setCurrentView('login')}
+      onRegisterClick={() => setCurrentView('signup')}
+      onAboutClick={() => setCurrentView('about')}
+      onPricingClick={() => setCurrentView('pricing')}
+      onCoursesClick={() => setCurrentView('courses')}
+    />;
+  }
+
+  if (currentView === 'courses') {
+    return <Courses 
+      onHomeClick={() => setCurrentView('landing')}
+      onLoginClick={() => setCurrentView('login')}
+      onRegisterClick={() => setCurrentView('signup')}
+      onAboutClick={() => setCurrentView('about')}
+      onPricingClick={() => setCurrentView('pricing')}
+      onTeachersClick={() => setCurrentView('teachers')}
+    />;
   }
 
   if (currentView === 'login') {

@@ -14,9 +14,13 @@ import {
 interface LandingPageProps {
   onLogin?: () => void;
   onRegister?: () => void;
+  onAbout?: () => void;
+  onPricing?: () => void;
+  onTeachers?: () => void;
+  onCourses?: () => void;
 }
 
-export function LandingPage({ onLogin, onRegister }: LandingPageProps) {
+export function LandingPage({ onLogin, onRegister, onAbout, onPricing, onTeachers, onCourses }: LandingPageProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -32,10 +36,10 @@ export function LandingPage({ onLogin, onRegister }: LandingPageProps) {
           
           {/* Middle Links (Hidden on Mobile) */}
           <div className="hidden md:flex gap-8 flex-row-reverse">
-            <a href="#courses" className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-[15px]">الدورات</a>
-            <a href="#teachers" className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-[15px]">المعلمون</a>
-            <a href="#pricing" className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-[15px]">الأسعار</a>
-            <a href="#about" className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-[15px]">من نحن</a>
+            <button onClick={onCourses} className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-[15px]">الدورات</button>
+            <button onClick={onTeachers} className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-[15px]">المعلمون</button>
+            <button onClick={onPricing} className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-[15px]">الأسعار</button>
+            <button onClick={onAbout} className="text-on-surface-variant hover:text-primary transition-colors font-label-md text-[15px]">من نحن</button>
           </div>
 
           {/* Right Side Buttons Action (RTL flex-row-reverse pushes it to visual right) */}
@@ -64,10 +68,10 @@ export function LandingPage({ onLogin, onRegister }: LandingPageProps) {
         {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
           <div className="md:hidden bg-surface border-t border-outline-variant/20 px-margin-mobile py-4 space-y-4 animate-in slide-in-from-top-2">
-             <a href="#courses" className="block text-on-surface-variant hover:text-primary font-label-md">الدورات</a>
-             <a href="#teachers" className="block text-on-surface-variant hover:text-primary font-label-md">المعلمون</a>
-             <a href="#pricing" className="block text-on-surface-variant hover:text-primary font-label-md">الأسعار</a>
-             <a href="#about" className="block text-on-surface-variant hover:text-primary font-label-md">من نحن</a>
+             <button onClick={onCourses} className="block w-full text-right text-on-surface-variant hover:text-primary font-label-md">الدورات</button>
+             <button onClick={onTeachers} className="block w-full text-right text-on-surface-variant hover:text-primary font-label-md">المعلمون</button>
+             <button onClick={onPricing} className="block w-full text-right text-on-surface-variant hover:text-primary font-label-md">الأسعار</button>
+             <button onClick={onAbout} className="block w-full text-right text-on-surface-variant hover:text-primary font-label-md">من نحن</button>
              <div className="h-px bg-outline-variant/20 w-full my-2"></div>
              <button 
                 onClick={onLogin}
